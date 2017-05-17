@@ -15,7 +15,7 @@ public class LaunchActivity extends AppCompatActivity {
             Intent intent = new Intent(this,MainActivity.class);
             this.startActivity(intent);
         }else{
-            Intent intent = new Intent(this,MainActivity.class);
+            Intent intent = new Intent(this,RegisterActivity.class);
             this.startActivity(intent);
         }
     }

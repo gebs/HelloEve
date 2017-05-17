@@ -1,5 +1,6 @@
 package com.mobpro.hslu.itengebs.helloeve;
 
+import android.content.Context;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
 import android.support.v4.widget.DrawerLayout;
@@ -12,6 +13,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
+
+import com.mobpro.hslu.itengebs.helloeve.api.DatabaseManager;
+import com.mobpro.hslu.itengebs.helloeve.api.WebAPICallback;
+import com.mobpro.hslu.itengebs.helloeve.api.WebAPIManager;
+import com.mobpro.hslu.itengebs.helloeve.model.HelloEveUser;
+import com.mobpro.hslu.itengebs.helloeve.model.SendMessage_Response;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -68,6 +75,18 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClickMeClick(View view){
-        Toast.makeText(MainActivity.this, "hoiiii", Toast.LENGTH_LONG).show();
+
+        HelloEveUser user = DatabaseManager.getInstance().getUserInfo();
+
+        WebAPIManager.getInstance().sendMessage(getApplicationContext(), user.getToken(), "0041795313129", "Test Message", null, new WebAPICallback<SendMessage_Response>() {
+            @Override
+            public void onCompleted(Exception e, SendMessage_Response response) {
+                if (response.Successfull) {
+                    Toast.makeText(MainActivity.this, "Message sent", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+
     }
 }

@@ -3,14 +3,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.mobpro.hslu.itengebs.helloeve">
 
-    <!--         android:roundIcon="@mipmap/ic_launcher_round" -->
+    <!-- android:roundIcon="@mipmap/ic_launcher_round" -->
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        tools:replace="android:icon">
+        tools:replace="android:icon"
+        android:name="com.orm.SugarApp">
         <meta-data
             android:name="DATABASE"
             android:value="helloEve.db" />
@@ -22,16 +23,17 @@
             android:value="true" />
         <meta-data
             android:name="DOMAIN_PACKAGE_NAME"
-            android:value="om.mobpro.hslu.itengebs" />
+            android:value="com.mobpro.hslu.itengebs.helloeve.model" />
 
-        <activity android:name=".MainActivity">
+        <activity android:name=".LaunchActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LaunchActivity"></activity>
+        <activity android:name=".MainActivity" />
+        <activity android:name=".RegisterActivity" android:windowSoftInputMode="adjustResize"></activity>
     </application>
 
 </manifest>
