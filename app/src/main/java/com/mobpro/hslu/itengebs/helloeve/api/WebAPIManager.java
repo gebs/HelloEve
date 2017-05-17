@@ -45,14 +45,15 @@ public class WebAPIManager {
                     }
                 });
     }
-    public void signIn(Context context, String token, String phoneHash, String code, final WebAPICallback<SignIn_Response> callback){
+    public void signIn(Context context, String token, String phoneHash,String phoneNumber, String code, final WebAPICallback<SignIn_Response> callback){
         JsonObject json = new JsonObject();
         json.addProperty("Token",token);
         json.addProperty("PhoneCodeHash",phoneHash);
+        json.addProperty("PhoneNumber",phoneNumber);
         json.addProperty("Code",code);
 
         Ion.with(context)
-                .load(BASE_PATH + "SignIn")
+                .load(BASE_PATH + "signIn")
                 .setJsonObjectBody(json)
                 .as(new TypeToken<SignIn_Response>(){})
                 .setCallback(new FutureCallback<SignIn_Response>() {
@@ -71,7 +72,7 @@ public class WebAPIManager {
         json.addProperty("UserId",userId);
 
         Ion.with(context)
-                .load(BASE_PATH + "SendMessage")
+                .load(BASE_PATH + "sendMessage")
                 .setJsonObjectBody(json)
                 .as(new TypeToken<SendMessage_Response>(){})
                 .setCallback(new FutureCallback<SendMessage_Response>() {
