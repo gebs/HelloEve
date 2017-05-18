@@ -65,7 +65,7 @@ public class WebAPIManager {
                 });
     }
 
-    public void sendMessage(Context context,String token,String phoneNumber,String Message, Integer userId, final WebAPICallback<SendMessage_Response> callback){
+    public void sendMessage(Context context,String token,String phoneNumber,String Message, final WebAPICallback<SendMessage_Response> callback){
         JsonObject json = new JsonObject();
         json.addProperty("Token",token);
         json.addProperty("PhoneNumber",Util.formatPhoneNumber(phoneNumber));

@@ -8,9 +8,6 @@ import com.orm.SugarRecord;
 
 public class HelloEveUser extends SugarRecord<HelloEveUser> {
     String phoneNumber;
-
-
-
     String phoneHash;
     String token;
 

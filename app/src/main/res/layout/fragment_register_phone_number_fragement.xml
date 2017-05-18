@@ -1,40 +1,45 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.mobpro.hslu.itengebs.helloeve.RegisterPhoneNumberFragement">
+
     <android.support.v7.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-<com.mobpro.hslu.itengebs.helloeve.PacificoTextView
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginLeft="10dp"
-    android:layout_marginRight="10dp"
-    android:layout_marginTop="25dp"
-    android:textSize="25sp"
-    android:text="Please enter your phonenumber which you used with your Telegram account"/>
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp">
-        <EditText
-            android:textColor="#000000"
+
+        <com.mobpro.hslu.itengebs.helloeve.PacificoTextView
             android:layout_width="match_parent"
-            android:id="@+id/RegisterPhoneNumbertxtPhonenumber"
             android:layout_height="wrap_content"
-            android:hint="Phonenumber"
-            android:inputType="phone"/>
-    </android.support.design.widget.TextInputLayout>
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="25dp"
+            android:text="@string/registerInfoText"
+            android:textSize="25sp" />
+
+        <com.mobpro.hslu.itengebs.helloeve.PacificoTextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp">
+
+            <com.mobpro.hslu.itengebs.helloeve.PacificoEditText
+                android:id="@+id/RegisterPhoneNumbertxtPhonenumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/phonenumber"
+                android:inputType="phone"
+                android:textColor="#000000" />
+        </com.mobpro.hslu.itengebs.helloeve.PacificoTextInputLayout>
     </android.support.v7.widget.LinearLayoutCompat>
+
     <android.support.design.widget.FloatingActionButton
+        android:id="@+id/RegisterPhoneNumberfabNext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|right"
+        android:layout_gravity="bottom|end"
         android:layout_margin="16dp"
         android:src="@drawable/ic_navigate_next_black_24dp"
-        android:id="@+id/RegisterPhoneNumberfabNext"
         app:layout_anchorGravity="bottom|right|end" />
 </FrameLayout>

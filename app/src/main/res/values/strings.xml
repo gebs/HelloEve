@@ -3,4 +3,8 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="registerInfoText">Please enter your phonenumber which you used with your Telegram account</string>
+    <string name="phonenumber">Phonenumber</string>
+    <string name="please_enter_your_code">Please enter your Code</string>
+    <string name="code">Code</string>
 </resources>

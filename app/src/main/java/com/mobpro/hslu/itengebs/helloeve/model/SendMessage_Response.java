@@ -5,6 +5,5 @@ package com.mobpro.hslu.itengebs.helloeve.model;
  */
 
 public class SendMessage_Response {
-    public Integer UserId;
     public boolean Successfull;
 }
