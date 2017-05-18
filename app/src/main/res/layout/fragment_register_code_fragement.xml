@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <com.mobpro.hslu.itengebs.helloeve.PacificoTextView
+        <com.mobpro.hslu.itengebs.helloeve.controls.PacificoTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
@@ -19,19 +19,19 @@
             android:text="@string/please_enter_your_code"
             android:textSize="25sp" />
 
-        <com.mobpro.hslu.itengebs.helloeve.PacificoTextInputLayout
+        <com.mobpro.hslu.itengebs.helloeve.controls.PacificoTextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp">
 
-            <com.mobpro.hslu.itengebs.helloeve.PacificoEditText
+            <com.mobpro.hslu.itengebs.helloeve.controls.PacificoEditText
                 android:id="@+id/RegisterCodetxtCode"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/code"
                 android:inputType="number"
                 android:textColor="#000000" />
-        </com.mobpro.hslu.itengebs.helloeve.PacificoTextInputLayout>
+        </com.mobpro.hslu.itengebs.helloeve.controls.PacificoTextInputLayout>
     </LinearLayout>
 
     <android.support.design.widget.FloatingActionButton
