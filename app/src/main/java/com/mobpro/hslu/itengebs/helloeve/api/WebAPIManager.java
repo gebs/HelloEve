@@ -68,8 +68,7 @@ public class WebAPIManager {
         JsonObject json = new JsonObject();
         json.addProperty("Token",token);
         json.addProperty("PhoneNumber",phoneNumber);
-        json.addProperty("Code",Message);
-        json.addProperty("UserId",userId);
+        json.addProperty("Message",Message);
 
         Ion.with(context)
                 .load(BASE_PATH + "sendMessage")

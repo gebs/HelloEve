@@ -56,9 +56,9 @@ public class RegisterCodeFragement extends Fragment {
         WebAPIManager.getInstance().signIn(this.getContext(), user.getToken(), user.getPhoneHash(), user.getPhoneNumber(), code, new WebAPICallback<SignIn_Response>() {
             @Override
             public void onCompleted(Exception e, SignIn_Response response) {
-                if (response.Successfull){
+
                     ((RegisterActivity)fragement.getActivity()).goToNextScreen("Main");
-                }
+
             }
         });
     }

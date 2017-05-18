@@ -26,8 +26,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void onClickMeClick(View view){
         HelloEveUser user = DatabaseManager.getInstance().getUserInfo();
-        final String receiverNumber = "0041795313129";
-        final String messageText ="Test Message Code";
+        final String receiverNumber = "0041796139817";
+        final String messageText ="Hello Eve";
 
         WebAPIManager.getInstance().sendMessage(getApplicationContext(), user.getToken(), receiverNumber, messageText, null, new WebAPICallback<SendMessage_Response>() {
             @Override
