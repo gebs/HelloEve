@@ -13,9 +13,11 @@ public class LaunchActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         if (DatabaseManager.getInstance().isUserLogedIn()){
             Intent intent = new Intent(this,MainActivity.class);
+            //intent.setFlags(intent.getFlags() | Intent.FLAG_ACTIVITY_NO_HISTORY);
             this.startActivity(intent);
         }else{
             Intent intent = new Intent(this,RegisterActivity.class);
+            intent.setFlags(intent.getFlags() | Intent.FLAG_ACTIVITY_NO_HISTORY);
             this.startActivity(intent);
         }
     }

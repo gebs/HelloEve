@@ -25,7 +25,7 @@
             android:name="DOMAIN_PACKAGE_NAME"
             android:value="com.mobpro.hslu.itengebs.helloeve.model" />
 
-        <activity android:name=".LaunchActivity">
+        <activity android:name=".LaunchActivity" android:noHistory="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

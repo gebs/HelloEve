@@ -7,6 +7,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
 import com.koushikdutta.async.future.FutureCallback;
 import com.koushikdutta.ion.Ion;
+import com.mobpro.hslu.itengebs.helloeve.Util;
 import com.mobpro.hslu.itengebs.helloeve.model.SendCode_Response;
 import com.mobpro.hslu.itengebs.helloeve.model.SendMessage_Response;
 import com.mobpro.hslu.itengebs.helloeve.model.SignIn_Response;
@@ -31,7 +32,7 @@ public class WebAPIManager {
 
     public void sendCode(Context context,final String phoneNumber, final WebAPICallback<SendCode_Response> callback){
         JsonObject json = new JsonObject();
-        json.addProperty("PhoneNumber",phoneNumber);
+        json.addProperty("PhoneNumber", Util.formatPhoneNumber(phoneNumber));
 
         Ion.with(context)
                 .load(BASE_PATH + "sendCode")
@@ -49,7 +50,7 @@ public class WebAPIManager {
         JsonObject json = new JsonObject();
         json.addProperty("Token",token);
         json.addProperty("PhoneCodeHash",phoneHash);
-        json.addProperty("PhoneNumber",phoneNumber);
+        json.addProperty("PhoneNumber",Util.formatPhoneNumber(phoneNumber));
         json.addProperty("Code",code);
 
         Ion.with(context)
@@ -67,7 +68,7 @@ public class WebAPIManager {
     public void sendMessage(Context context,String token,String phoneNumber,String Message, Integer userId, final WebAPICallback<SendMessage_Response> callback){
         JsonObject json = new JsonObject();
         json.addProperty("Token",token);
-        json.addProperty("PhoneNumber",phoneNumber);
+        json.addProperty("PhoneNumber",Util.formatPhoneNumber(phoneNumber));
         json.addProperty("Message",Message);
 
         Ion.with(context)
