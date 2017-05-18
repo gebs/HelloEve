@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory
+        android:key="messagePrefs"
+        android:title="PhoneNumber">
+
+        <EditTextPreference
+            android:key="teaPreferred"
+            android:persistent="true"
+            android:summary="Öppe so e telifonnommere"
+            android:title="Phone and Text"/>
+        <!--android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center">
+
+
+            <EditText
+                android:id="@+id/RegisterPhoneNumbertxtPhonenumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Phonenumber"
+                android:inputType="phone"
+                android:textColor="#000000"/>
+
+        </android.support.design.widget.TextInputLayout-->
+
+    </PreferenceCategory>
+</PreferenceScreen>

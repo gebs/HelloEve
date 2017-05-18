@@ -25,9 +25,12 @@
             android:name="DOMAIN_PACKAGE_NAME"
             android:value="com.mobpro.hslu.itengebs.helloeve.model" />
 
-        <activity android:name=".LaunchActivity" android:noHistory="true">
+        <activity
+            android:name=".LaunchActivity"
+            android:noHistory="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -36,6 +39,7 @@
             android:name=".RegisterActivity"
             android:windowSoftInputMode="adjustResize" />
         <activity android:name=".HistoryActivity" />
+        <activity android:name=".MessagePrefActivity" />
     </application>
 
 </manifest>

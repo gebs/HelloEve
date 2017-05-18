@@ -1,13 +1,11 @@
 package com.mobpro.hslu.itengebs.helloeve;
 
 import android.content.Intent;
-import android.support.design.widget.FloatingActionButton;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
@@ -31,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         final String receiverNumber = "0041796139817";
         final String messageText ="Hello Eve";
 
-        WebAPIManager.getInstance().sendMessage(getApplicationContext(), user.getToken(), receiverNumber, messageText, null, new WebAPICallback<SendMessage_Response>() {
+        WebAPIManager.getInstance().sendMessage(getApplicationContext(), user.getToken(), receiverNumber, messageText, new WebAPICallback<SendMessage_Response>() {
             @Override
             public void onCompleted(Exception e, SendMessage_Response response) {
                 if (response.Successfull){
@@ -53,6 +51,21 @@ public class MainActivity extends AppCompatActivity {
 
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.settings, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        super.onOptionsItemSelected(item);
+
+        if(item.getItemId() != R.id.action_settings){
+            return false;
+        }
+
+        Toast.makeText(this,"Settings, yeah", Toast.LENGTH_SHORT).show();
+        Intent prefIntent = new Intent(MainActivity.this, MessagePrefActivity.class);
+        startActivity(prefIntent);
+
         return true;
     }
 }
