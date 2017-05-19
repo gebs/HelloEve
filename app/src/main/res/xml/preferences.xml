@@ -6,7 +6,7 @@
 
         <EditTextPreference
             android:id="@+id/tpPhonenumber"
-            android:key="phonePref"
+            android:key="phoneNumber"
             android:persistent="true"
             android:summary="@string/prefsPhonenumberSummary"
             android:title="@string/phonenumber"
@@ -14,7 +14,7 @@
 
         <EditTextPreference
             android:id="@+id/tpMessageText"
-            android:key="messagePref"
+            android:key="message"
             android:hint="@string/prefsMessageHint"
             android:persistent="true"
             android:singleLine="false"

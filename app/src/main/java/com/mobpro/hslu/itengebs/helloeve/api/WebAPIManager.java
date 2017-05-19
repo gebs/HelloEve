@@ -12,23 +12,15 @@ import com.mobpro.hslu.itengebs.helloeve.model.SendCode_Response;
 import com.mobpro.hslu.itengebs.helloeve.model.SendMessage_Response;
 import com.mobpro.hslu.itengebs.helloeve.model.SignIn_Response;
 
+import org.androidannotations.annotations.EBean;
 import org.json.JSONObject;
 
 /**
  * Created by gebs on 5/15/17.
  */
-
+@EBean(scope = EBean.Scope.Singleton)
 public class WebAPIManager {
     private static final String BASE_PATH= "http://monitoring.o-x.ch/HelloEve/api/v0/telegram/";
-
-    private static WebAPIManager instance;
-
-    public static WebAPIManager getInstance(){
-        if (instance == null){
-            instance = new WebAPIManager();
-        }
-        return instance;
-    }
 
     public void sendCode(Context context,final String phoneNumber, final WebAPICallback<SendCode_Response> callback){
         JsonObject json = new JsonObject();

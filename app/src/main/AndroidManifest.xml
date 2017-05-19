@@ -26,7 +26,7 @@
             android:value="com.mobpro.hslu.itengebs.helloeve.model" />
 
         <activity
-            android:name=".LaunchActivity"
+            android:name=".LaunchActivity_"
             android:noHistory="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -34,11 +34,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" />
+        <activity android:name=".MainActivity_" />
         <activity
-            android:name=".RegisterActivity"
+            android:name=".RegisterActivity_"
             android:windowSoftInputMode="adjustResize" />
-        <activity android:name=".HistoryActivity" />
+        <activity android:name=".HistoryActivity_" />
         <activity android:name=".MessagePrefActivity" />
     </application>
 

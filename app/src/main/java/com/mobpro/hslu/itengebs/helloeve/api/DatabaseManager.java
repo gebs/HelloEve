@@ -4,22 +4,16 @@ import com.mobpro.hslu.itengebs.helloeve.model.HelloEveUser;
 import com.mobpro.hslu.itengebs.helloeve.model.Message;
 import com.orm.Database;
 
+import org.androidannotations.annotations.EBean;
+
 import java.util.Date;
 import java.util.List;
 
 /**
  * Created by gebs on 5/15/17.
  */
-
+@EBean(scope = EBean.Scope.Singleton)
 public class DatabaseManager {
-    private static DatabaseManager instance;
-
-    public static DatabaseManager getInstance(){
-        if (instance == null){
-            instance = new DatabaseManager();
-        }
-        return instance;
-    }
 
     public boolean isUserLogedIn(){
         List<HelloEveUser> user = HelloEveUser.listAll(HelloEveUser.class);

@@ -7,32 +7,31 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.FrameLayout;
 
+import org.androidannotations.annotations.EActivity;
+import org.androidannotations.annotations.ViewById;
+
+@EActivity(R.layout.register)
 public class RegisterActivity extends AppCompatActivity {
 
-    private FrameLayout fragmentContainer;
-    private int currentFrag = 0;
+    @ViewById(R.id.fragment_container)
+    FrameLayout fragmentContainer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.register);
-
-        fragmentContainer = (FrameLayout)findViewById(R.id.fragment_container);
-
-        RegisterPhoneNumberFragement rpf = new RegisterPhoneNumberFragement();
+        RegisterPhoneNumberFragement rpf = new RegisterPhoneNumberFragement_();
         getSupportFragmentManager().beginTransaction().add(R.id.fragment_container,rpf).commit();
     }
     public void goToNextScreen(String nextFrag){
         if (nextFrag.equals("Code")){
-            RegisterCodeFragement rcf = new RegisterCodeFragement();
+            RegisterCodeFragement rcf = new RegisterCodeFragement_();
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
             transaction.replace(R.id.fragment_container, rcf);
             transaction.addToBackStack(null);
             transaction.commit();
         }else{
-            Intent intent = new Intent(this,MainActivity.class);
-            intent.setFlags(intent.getFlags() | Intent.FLAG_ACTIVITY_NO_HISTORY);
-            startActivity(intent);
+            //MainActivity_.intent(getApplicationContext()).flags(Intent.FLAG_ACTIVITY_NO_HISTORY).start();
+            MainActivity_.intent(getApplicationContext()).start();
         }
     }
 }

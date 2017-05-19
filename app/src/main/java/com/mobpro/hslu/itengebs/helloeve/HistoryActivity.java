@@ -10,11 +10,24 @@ import com.mobpro.hslu.itengebs.helloeve.model.Message;
 import com.mobpro.hslu.itengebs.helloeve.viewadapter.HistoryViewAdapter;
 import com.orm.Database;
 
+import org.androidannotations.annotations.AfterViews;
+import org.androidannotations.annotations.Bean;
+import org.androidannotations.annotations.EActivity;
+import org.androidannotations.annotations.EBean;
+import org.androidannotations.annotations.ViewById;
+
 import java.util.ArrayList;
 import java.util.List;
 
+@EActivity(R.layout.history_list)
 public class HistoryActivity extends AppCompatActivity {
-    private RecyclerView mRecyclerView;
+
+    @ViewById(R.id.rcmessages)
+    RecyclerView mRecyclerView;
+
+    @Bean
+    DatabaseManager dbmanager;
+
     private HistoryViewAdapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
 
@@ -23,17 +36,11 @@ public class HistoryActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.history_list);
+        src = dbmanager.getMessages();
+    }
 
-        mRecyclerView = (RecyclerView) findViewById(R.id.rcmessages);
-
-        src = DatabaseManager.getInstance().getMessages();
-
-        // use this setting to improve performance if you know that changes
-        // in content do not change the layout size of the RecyclerView
-        //  mRecyclerView.setHasFixedSize(true);
-
-        // use a linear layout manager
+    @AfterViews
+    void setReciclerView(){
         mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
 
@@ -52,7 +59,7 @@ public class HistoryActivity extends AppCompatActivity {
     protected void onResume(){
         super.onResume();
 
-        src = DatabaseManager.getInstance().getMessages();
+        src = dbmanager.getMessages();
         mAdapter.messages = src;
         mAdapter.notifyDataSetChanged();
 

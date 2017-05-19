@@ -6,19 +6,22 @@ import android.os.Bundle;
 
 import com.mobpro.hslu.itengebs.helloeve.api.DatabaseManager;
 
+import org.androidannotations.annotations.Bean;
+import org.androidannotations.annotations.EActivity;
+
+@EActivity
 public class LaunchActivity extends AppCompatActivity {
+
+    @Bean
+    DatabaseManager dbmanager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (DatabaseManager.getInstance().isUserLogedIn() || true){
-            Intent intent = new Intent(this,MainActivity.class);
-            //intent.setFlags(intent.getFlags() | Intent.FLAG_ACTIVITY_NO_HISTORY);
-            this.startActivity(intent);
-        }else{
-            Intent intent = new Intent(this,RegisterActivity.class);
-            intent.setFlags(intent.getFlags() | Intent.FLAG_ACTIVITY_NO_HISTORY);
-            this.startActivity(intent);
+        if (dbmanager.isUserLogedIn()) {
+            MainActivity_.intent(getApplicationContext()).start();
+        } else {
+            RegisterActivity_.intent(getApplicationContext()).flags(Intent.FLAG_ACTIVITY_NO_HISTORY).start();
         }
     }
 }

@@ -5,14 +5,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity_">
 
     <ImageView
         android:id="@+id/clickMeImage"
         android:layout_width="320dp"
         android:layout_height="390dp"
         android:clickable="true"
-        android:onClick="onClickMeClick"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -29,7 +28,7 @@
         android:src="@android:drawable/ic_menu_recent_history"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:onClick="onHistoryFabClick"/>
+        />
 
     <TextView
         android:id="@+id/textView"

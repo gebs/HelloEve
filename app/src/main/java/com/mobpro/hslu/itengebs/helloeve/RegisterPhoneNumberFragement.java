@@ -1,7 +1,9 @@
 package com.mobpro.hslu.itengebs.helloeve;
 
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.support.annotation.UiThread;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TextInputEditText;
 import android.support.v4.app.Fragment;
@@ -15,16 +17,34 @@ import com.mobpro.hslu.itengebs.helloeve.api.WebAPICallback;
 import com.mobpro.hslu.itengebs.helloeve.api.WebAPIManager;
 import com.mobpro.hslu.itengebs.helloeve.model.SendCode_Response;
 
+import org.androidannotations.annotations.AfterViews;
+import org.androidannotations.annotations.Background;
+import org.androidannotations.annotations.Bean;
+import org.androidannotations.annotations.Click;
+import org.androidannotations.annotations.EFragment;
+import org.androidannotations.annotations.ViewById;
+
 
 /**
  * A simple {@link Fragment} subclass.
  */
+@EFragment(R.layout.fragment_register_phone_number_fragement)
 public class RegisterPhoneNumberFragement extends Fragment {
 
 
-    private EditText txtPhoneNumber;
-    private FloatingActionButton fabNext;
+    @ViewById(R.id.RegisterPhoneNumbertxtPhonenumber)
+    EditText txtPhoneNumber;
 
+    @ViewById(R.id.RegisterPhoneNumberfabNext)
+    FloatingActionButton fabNext;
+
+    @Bean
+    DatabaseManager dbmanager;
+
+    @Bean
+    WebAPIManager webmanager;
+
+    private ProgressDialog progressDialog;
 
     public RegisterPhoneNumberFragement() {
         // Required empty public constructor
@@ -34,33 +54,45 @@ public class RegisterPhoneNumberFragement extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
-        View view = inflater.inflate(R.layout.fragment_register_phone_number_fragement, container, false);
-        txtPhoneNumber = (EditText)view.findViewById(R.id.RegisterPhoneNumbertxtPhonenumber);
-        fabNext = (FloatingActionButton)view.findViewById(R.id.RegisterPhoneNumberfabNext);
-
-        fabNext.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                nextClicked();
-            }
-        });
-
-        return view;
+        return null;
     }
-    private void nextClicked(){
+
+    @AfterViews
+    void setProgressDialog(){
+        progressDialog = new ProgressDialog(getContext());
+        progressDialog.setMessage("sending Code");
+
+    }
+
+    @Click(R.id.RegisterPhoneNumberfabNext)
+    void nextClicked() {
+        Util.hideKeyboard(this.getActivity());
+        progressDialog.show();
+        sendCode();
+    }
+
+    @Background
+    void sendCode() {
         final String phoneNumber = txtPhoneNumber.getText().toString();
         final RegisterPhoneNumberFragement fragement = this;
 
-        WebAPIManager.getInstance().sendCode(this.getContext(), phoneNumber, new WebAPICallback<SendCode_Response>() {
+        webmanager.sendCode(this.getContext(), phoneNumber, new WebAPICallback<SendCode_Response>() {
             @Override
             public void onCompleted(Exception e, SendCode_Response response) {
-                DatabaseManager.getInstance().saveUserData(phoneNumber,response.Token,response.PhoneHash);
-                ((RegisterActivity)fragement.getActivity()).goToNextScreen("Code");
+                if (response != null) {
+                    dbmanager.saveUserData(phoneNumber, response.Token, response.PhoneHash);
+                    ((RegisterActivity_) fragement.getActivity()).goToNextScreen("Code");
+                    hideLoading();
+                }else{
+                    hideLoading();
+                }
+
             }
         });
-
-
+    }
+    @UiThread
+    void hideLoading(){
+        progressDialog.hide();
     }
 
 }
