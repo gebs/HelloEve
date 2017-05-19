@@ -1,11 +1,13 @@
 package com.mobpro.hslu.itengebs.helloeve;
 
 import android.content.Intent;
+import android.graphics.BitmapFactory;
 import android.support.design.widget.FloatingActionButton;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Html;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -108,7 +110,6 @@ public class MainActivity extends AppCompatActivity {
 
     @OptionsItem(R.id.action_settings)
     void settingsSelected(){
-        Toast.makeText(this, "Settings, yeah", Toast.LENGTH_SHORT).show();
         Intent prefIntent = new Intent(MainActivity.this, MessagePrefActivity.class);
         startActivity(prefIntent);
     }
