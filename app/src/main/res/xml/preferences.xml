@@ -5,25 +5,21 @@
         android:title="PhoneNumber">
 
         <EditTextPreference
-            android:key="teaPreferred"
+            android:id="@+id/tpPhonenumber"
+            android:key="phonePref"
             android:persistent="true"
-            android:summary="Öppe so e telifonnommere"
-            android:title="Phone and Text"/>
-        <!--android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center">
+            android:summary="@string/prefsPhonenumberSummary"
+            android:title="@string/phonenumber"
+            android:hint="@string/phonenumber"/>
 
-
-            <EditText
-                android:id="@+id/RegisterPhoneNumbertxtPhonenumber"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Phonenumber"
-                android:inputType="phone"
-                android:textColor="#000000"/>
-
-        </android.support.design.widget.TextInputLayout-->
+        <EditTextPreference
+            android:id="@+id/tpMessageText"
+            android:key="messagePref"
+            android:hint="@string/prefsMessageHint"
+            android:persistent="true"
+            android:singleLine="false"
+            android:summary="@string/prefsMessageSummary"
+            android:title="@string/prefsMessageTitle" />
 
     </PreferenceCategory>
 </PreferenceScreen>

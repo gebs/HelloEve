@@ -11,7 +11,7 @@ public class LaunchActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (DatabaseManager.getInstance().isUserLogedIn()){
+        if (DatabaseManager.getInstance().isUserLogedIn() || true){
             Intent intent = new Intent(this,MainActivity.class);
             //intent.setFlags(intent.getFlags() | Intent.FLAG_ACTIVITY_NO_HISTORY);
             this.startActivity(intent);
