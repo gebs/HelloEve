@@ -31,7 +31,7 @@ public class RegisterActivity extends AppCompatActivity {
             transaction.commit();
         }else{
             //MainActivity_.intent(getApplicationContext()).flags(Intent.FLAG_ACTIVITY_NO_HISTORY).start();
-            MainActivity_.intent(getApplicationContext()).start();
+            MainActivity_.intent(this).start();
         }
     }
 }

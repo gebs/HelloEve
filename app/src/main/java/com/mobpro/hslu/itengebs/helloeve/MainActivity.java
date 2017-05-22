@@ -78,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
         if (receiverNumber.contains(";")) {
             String[] numbers = receiverNumber.split(";");
             for (final String number : numbers) {
-                webmanager.sendMessage(getApplicationContext(), user.getToken(), receiverNumber, messageText, new WebAPICallback<SendMessage_Response>() {
+                webmanager.sendMessage(this, user.getToken(), receiverNumber, messageText, new WebAPICallback<SendMessage_Response>() {
                     @Override
                     public void onCompleted(Exception e, SendMessage_Response response) {
                         if (response.Successfull) {
@@ -90,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
             }
 
         }else {
-            webmanager.sendMessage(getApplicationContext(), user.getToken(), receiverNumber, messageText, new WebAPICallback<SendMessage_Response>() {
+            webmanager.sendMessage(this, user.getToken(), receiverNumber, messageText, new WebAPICallback<SendMessage_Response>() {
                 @Override
                 public void onCompleted(Exception e, SendMessage_Response response) {
                     if (response.Successfull) {
@@ -119,7 +119,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Click(R.id.historyFab)
     public void onHistoryFabClick() {
-        HistoryActivity_.intent(getApplicationContext()).start();
+        HistoryActivity_.intent(this).start();
     }
 
 

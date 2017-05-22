@@ -19,9 +19,9 @@ public class LaunchActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (dbmanager.isUserLogedIn()) {
-            MainActivity_.intent(getApplicationContext()).start();
+            MainActivity_.intent(this).start();
         } else {
-            RegisterActivity_.intent(getApplicationContext()).flags(Intent.FLAG_ACTIVITY_NO_HISTORY).start();
+            RegisterActivity_.intent(this).flags(Intent.FLAG_ACTIVITY_NO_HISTORY).start();
         }
     }
 }
