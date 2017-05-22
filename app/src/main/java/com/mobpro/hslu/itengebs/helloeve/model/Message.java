@@ -9,6 +9,20 @@ import java.util.Date;
  */
 
 public class Message extends SugarRecord<Message> {
+
+    String messageText;
+    String receiverPhoneNumber;
+    Date timestamp;
+
+    public Message() {
+    }
+
+    public Message(String messageText, String receiverPhoneNumber, Date timestamp) {
+        this.messageText = messageText;
+        this.receiverPhoneNumber = receiverPhoneNumber;
+        this.timestamp = timestamp;
+    }
+
     public String getMessageText() {
         return messageText;
     }
@@ -30,19 +44,6 @@ public class Message extends SugarRecord<Message> {
     }
 
     public void setTimestamp(Date timestamp) {
-        this.timestamp = timestamp;
-    }
-
-    String messageText;
-    String receiverPhoneNumber;
-    Date timestamp;
-
-    public Message() {
-    }
-
-    public Message(String messageText, String receiverPhoneNumber, Date timestamp) {
-        this.messageText = messageText;
-        this.receiverPhoneNumber = receiverPhoneNumber;
         this.timestamp = timestamp;
     }
 }

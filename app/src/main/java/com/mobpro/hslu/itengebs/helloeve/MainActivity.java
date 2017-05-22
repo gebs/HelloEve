@@ -63,37 +63,53 @@ public class MainActivity extends AppCompatActivity {
 
     @Click(R.id.clickMeImage)
     public void onClickMeClick() {
-       // this.checkPreferences();
+        // this.checkPreferences();
         sendMessage();
     }
 
     @Background
-    void sendMessage(){
+    void sendMessage() {
         HelloEveUser user = dbManager.getUserInfo();
 
 
         final String receiverNumber = prefs.phoneNumber().get();  //this.phoneNumber;
         final String messageText = prefs.message().get();//this.message;
 
-        webmanager.sendMessage(getApplicationContext(), user.getToken(), receiverNumber, messageText, new WebAPICallback<SendMessage_Response>() {
-            @Override
-            public void onCompleted(Exception e, SendMessage_Response response) {
-                if (response.Successfull) {
-                    dbManager.saveMessage(messageText, receiverNumber);
-                    Toast.makeText(MainActivity.this, "Message sent", Toast.LENGTH_LONG).show();
-                }
+        if (receiverNumber.contains(";")) {
+            String[] numbers = receiverNumber.split(";");
+            for (final String number : numbers) {
+                webmanager.sendMessage(getApplicationContext(), user.getToken(), receiverNumber, messageText, new WebAPICallback<SendMessage_Response>() {
+                    @Override
+                    public void onCompleted(Exception e, SendMessage_Response response) {
+                        if (response.Successfull) {
+                            dbManager.saveMessage(messageText, number);
+                            Toast.makeText(MainActivity.this, "Message sent", Toast.LENGTH_LONG).show();
+                        }
+                    }
+                });
             }
-        });
+
+        }else {
+            webmanager.sendMessage(getApplicationContext(), user.getToken(), receiverNumber, messageText, new WebAPICallback<SendMessage_Response>() {
+                @Override
+                public void onCompleted(Exception e, SendMessage_Response response) {
+                    if (response.Successfull) {
+                        dbManager.saveMessage(messageText, receiverNumber);
+                        Toast.makeText(MainActivity.this, "Message sent", Toast.LENGTH_LONG).show();
+                    }
+                }
+            });
+        }
 
     }
 
-    private void checkPreferences(){
+    private void checkPreferences() {
 
         final SharedPreferences messagePref = PreferenceManager.getDefaultSharedPreferences(this);
-        this.phoneNumber = messagePref.getString("phonePref","1");
-        this.message = messagePref.getString("messagePref","Hello Eve");
+        this.phoneNumber = messagePref.getString("phonePref", "1");
+        this.message = messagePref.getString("messagePref", "Hello Eve");
 
-        if((phoneNumber == null || phoneNumber.isEmpty())||(message == null || message.isEmpty())){
+        if ((phoneNumber == null || phoneNumber.isEmpty()) || (message == null || message.isEmpty())) {
             this.phoneNumber = "0041796139817";
             this.message = "HelloEve";
         }
@@ -105,7 +121,6 @@ public class MainActivity extends AppCompatActivity {
     public void onHistoryFabClick() {
         HistoryActivity_.intent(getApplicationContext()).start();
     }
-
 
 
     @OptionsItem(R.id.action_settings)
