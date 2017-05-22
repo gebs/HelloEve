@@ -53,9 +53,6 @@ public class MainActivity extends AppCompatActivity {
     @Pref
     HelloEvePrefs_ prefs;
 
-    private String phoneNumber;
-    private String message;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -103,20 +100,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
-
-    private void checkPreferences() {
-
-        final SharedPreferences messagePref = PreferenceManager.getDefaultSharedPreferences(this);
-        this.phoneNumber = messagePref.getString("phonePref", "1");
-        this.message = messagePref.getString("messagePref", "Hello Eve");
-
-        if ((phoneNumber == null || phoneNumber.isEmpty()) || (message == null || message.isEmpty())) {
-            this.phoneNumber = "0041796139817";
-            this.message = "HelloEve";
-        }
-
-    }
-
 
     @Click(R.id.historyFab)
     public void onHistoryFabClick() {
