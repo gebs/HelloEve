@@ -109,7 +109,7 @@ public class MainActivity extends AppCompatActivity {
 
     @OptionsItem(R.id.action_settings)
     void settingsSelected(){
-        Intent prefIntent = new Intent(MainActivity.this, MessagePrefActivity.class);
+        Intent prefIntent = new Intent(this, MessagePrefActivity.class);
         startActivity(prefIntent);
     }
 

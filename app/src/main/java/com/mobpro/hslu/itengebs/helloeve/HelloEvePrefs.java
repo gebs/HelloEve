@@ -8,7 +8,7 @@ import org.androidannotations.annotations.sharedpreferences.SharedPref;
  */
 @SharedPref(SharedPref.Scope.UNIQUE)
 public interface HelloEvePrefs {
-    @DefaultString("0041796139817")
+    @DefaultString("0041791234567")
     String phoneNumber();
 
     @DefaultString("HelloEve")
